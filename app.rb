@@ -24,7 +24,7 @@ def fetch_sets
   flickr.photosets.getList(:user_id => $user_id).each do |ps|
     this = sets[ps.title] = { :id => ps.id, :description => ps.description, :photos => [] }
     flickr.photosets.getPhotos(:photoset_id => ps.id)["photo"].each do |p|
-      this[:photos] << { :id => p.id, :url_b => FlickRaw.url_b(p) }
+      this[:photos] << { :id => p.id, :url => FlickRaw.url_z(p) }
     end
   end
   return sets
