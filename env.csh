@@ -1,0 +1,5 @@
+setenv FLICKR_API_KEY '574f6b47c0033e517a6965463e7920f7'
+setenv FLICKR_SHARED_SECRET 'fb187e5434e3d47b'
+setenv FLICKR_USER_ID '31943107@N08'
+
+setenv JRUBY_OPTS '-Xcext.enabled=true --server --1.9'
