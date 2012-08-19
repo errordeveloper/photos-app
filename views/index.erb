@@ -36,7 +36,7 @@
                       alert('broken image!');
                     } else {
                       filmWidth += this.naturalWidth;
-                      $('#film').attr('style', 'width:'+filmWidth+'px;');
+                      $('#film').css({width: filmWidth+'px'});
                     }
                   })
               ).appendTo('#film');
