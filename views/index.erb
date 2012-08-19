@@ -4,16 +4,44 @@
     <title>
       <%= $user_name %>
     </title>
+    <% CDN[:scripts].each do |cdn| %>
+      <script src='<%= cdn %>'></script>
+    <% end %>
+    <script>
+      var flickr = {
+        sets: JSON.parse(<%= "'#{$sets_json}'" %>),
+        load: function(name) {
+          count = this.sets[name].photos.length
+          console.log('Loading %d photos from set "%s" ...', count, name);
+
+          $.each(this.sets[name].photos, function(k, v) {
+            $('<img />')
+              .attr('src', v.url_b)
+              .fadeIn('slow')
+              .appendTo('#film');
+          });
+
+        }
+      };
+      $(window).hashchange(function() {
+        flickr.load(location.hash.slice(1));
+      });
+
+      $(document).ready(function() {
+        // Tirger `hashchange` enent on load, in case it was provided
+        $(window).hashchange();
+      });
+    </script>
   </head>
   <body>
     <h1><%= $user_name %>'s Photography</h1>
-    <pre>
-      <%= $sets_json %>
-    </pre>
-    <ul>
-      <% $sets_hash.keys.each do |ps| %>
-        <li><a href='#<%= "#{ps}"%>'><%= "#{ps}" %></a></li>
-      <% end %>
-    </ul>
+    <div id='menu'>
+      <ul>
+        <% $sets_hash.keys.each do |ps| %>
+          <li><a href='#<%= "#{ps}"%>'><%= "#{ps}" %></a></li>
+        <% end %>
+      </ul>
+    </div>
+    <div id='film'/>
   </body>
 </html>
