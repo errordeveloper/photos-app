@@ -7,20 +7,41 @@
     <% CDN[:scripts].each do |cdn| %>
       <script src='<%= cdn %>'></script>
     <% end %>
+    <style>
+      #film, li, img {
+        text-align: center; overflow-x: scroll; overflow-y: hidden;
+        display: inline; list-style-type: none; float: left; padding: 0px 0px 25px 10px; /* border: 1px solid #fff; */
+      }
+      img {
+        top:164px; /* width:382px; height:368px; */
+      }
+    </style>
     <script>
+      var filmWidth = 0;
       var flickr = {
         sets: JSON.parse(<%= "'#{$sets_json}'" %>),
         load: function(name) {
           count = this.sets[name].photos.length
           console.log('Loading %d photos from set "%s" ...', count, name);
-
-          $.each(this.sets[name].photos, function(k, v) {
-            $('<img />')
-              .attr('src', v.url_b)
-              .fadeIn('slow')
-              .appendTo('#film');
+          new_photos = this.sets[name].photos;
+          $('#film').fadeOut('slow', function() {
+            $('#film').empty();
+            $('#film').fadeIn();
+            $.each(new_photos, function(k, v) {
+              $('<li />').append(
+                $('<img />')
+                  .attr('src', v.url)
+                  .load(function() {
+                    if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+                      alert('broken image!');
+                    } else {
+                      filmWidth += this.naturalWidth;
+                      $('#film').attr('style', 'width:'+filmWidth+'px;');
+                    }
+                  })
+              ).appendTo('#film');
+            });
           });
-
         }
       };
       $(window).hashchange(function() {
@@ -36,12 +57,12 @@
   <body>
     <h1><%= $user_name %>'s Photography</h1>
     <div id='menu'>
-      <ul>
+      <ul height=50%>
         <% $sets_hash.keys.each do |ps| %>
           <li><a href='#<%= "#{ps}"%>'><%= "#{ps}" %></a></li>
         <% end %>
       </ul>
     </div>
-    <div id='film'/>
+    <ul id='film' />
   </body>
 </html>
