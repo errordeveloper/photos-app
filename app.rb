@@ -15,9 +15,9 @@ $user_name = flickr.people.getInfo(:user_id => $user_id).username
 def fetch_sets
   sets = {}
   flickr.photosets.getList(:user_id => $user_id).each do |ps|
-    this = sets[ps.title] = { :description => ps.description, :photos => [] }
+    this = sets[ps.title] = { :id => ps.id, :description => ps.description, :photos => [] }
     flickr.photosets.getPhotos(:photoset_id => ps.id)["photo"].each do |p|
-      this[:photos] << FlickRaw.url_b(p)
+      this[:photos] << { :id => p.id, :url_b => FlickRaw.url_b(p) }
     end
   end
   return sets
@@ -28,15 +28,22 @@ end
 #   * a cron job that puts it into redis
 #   * a background thread that will wake up every once in a while
 
-$sets = fetch_sets.to_json
+$sets_hash = fetch_sets
+$sets_json = $sets_hash.to_json
 
 get '/' do
+  erb :index
+end
 
-  "<!DOCTYPE html>
-  <html><head><title>#$user_name</title></head>
-  <body>
-  <h1>#$user_name's Photography</h1>
-  <pre>#$sets</pre>
-  </body>
-  </html>"
+get '/local_sets.json' do
+  content_type 'application/json'
+  $sets_json
+end
+get '/fetch_sets.json' do
+  content_type 'application/json'
+  fetch_sets.to_json
+end
+get '/store_sets.json' do
+  $sets_hash = fetch_sets
+  $sets_json = sets.to_json
 end

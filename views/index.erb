@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%= $user_name %>
+    </title>
+  </head>
+  <body>
+    <h1><%= $user_name %>'s Photography</h1>
+    <pre>
+      <%= $sets_json %>
+    </pre>
+    <ul>
+      <% $sets_hash.keys.each do |ps| %>
+        <li><a href='#<%= "#{ps}"%>'><%= "#{ps}" %></a></li>
+      <% end %>
+    </ul>
+  </body>
+</html>
