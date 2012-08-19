@@ -2,6 +2,13 @@ require 'flickraw'
 require 'sinatra'
 require 'eventmachine'
 
+CDN_PREFIX = 'http://cdnjs.cloudflare.com/ajax/libs/'
+CDN = {
+  :scripts => [
+    "#{CDN_PREFIX}jquery/1.8.0/jquery-1.8.0.min.js",
+    "#{CDN_PREFIX}jquery-hashchange/v1.3/jquery.ba-hashchange.min.js",
+  ],
+}
 
 FlickRaw.api_key = ENV['FLICKR_API_KEY']
 FlickRaw.shared_secret = ENV['FLICKR_SHARED_SECRET']
