@@ -7,39 +7,42 @@
     <% CDN[:scripts].each do |cdn| %>
       <script src='<%= cdn %>'></script>
     <% end %>
+    <link rel='stylesheet' href='style.css'>
+    <!--
     <style>
-      #film, li, img {
-        text-align: center; overflow-x: scroll; overflow-y: hidden;
-        display: inline; list-style-type: none; float: left; padding: 0px 0px 25px 10px; /* border: 1px solid #fff; */
-      }
-      img {
-        top:164px; /* width:382px; height:368px; */
-      }
+      li { list-style-type: none; }
+      .navigation ul { width: 400px; height: 800px; margin: 12px 12px 12px 12px; padding: 3px 3px 3px 3px; }
+      .navigation { text-align: left; position: absolute; float: left; z-index: 2; padding: 0px 0px 0px 0px; }
+      .navigation li { display: table-row; color: black; background: white; height: 80px; margin: 12px 12px 12px 12px; padding: 12px 0px 12px 12px }
+      .navigation a { color: black; text-decoration: none; }
     </style>
+    -->
     <script>
-      var filmWidth = 0;
       var flickr = {
         sets: JSON.parse(<%= "'#{$sets_json}'" %>),
         load: function(name) {
+          var filmWidth = 300;
           count = this.sets[name].photos.length
           console.log('Loading %d photos from set "%s" ...', count, name);
           new_photos = this.sets[name].photos;
-          $('#film').fadeOut('slow', function() {
-            $('#film').empty();
-            $('#film').fadeIn();
+          $('.container').fadeOut('slow', function() {
+            $('.container').empty();
+            $('.container').fadeIn();
             $.each(new_photos, function(k, v) {
-              $('<li />').append(
-                $('<img />')
+              $('<li />').addClass('content').append(
+                $('<img />')//.addClass('film')
                   .attr('src', v.url)
                   .load(function() {
-                    if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
-                      alert('broken image!');
+                    if (!this.complete
+                        || typeof this.naturalWidth == undefined
+                        || this.naturalWidth == 0) {
+                      console.log('Skipping broken image %d (%s)', k, v.url);
                     } else {
                       filmWidth += this.naturalWidth;
-                      $('#film').css({width: filmWidth+'px'});
+                      $('.container').css({width: filmWidth+'px'});
                     }
                   })
-              ).appendTo('#film');
+              ).appendTo('.container');
             });
           });
         }
@@ -56,13 +59,15 @@
   </head>
   <body>
     <h1><%= $user_name %>'s Photography</h1>
-    <div id='menu'>
-      <ul height=50%>
+    <div id='sidebar'>
+      <ul id='menu'>
         <% $sets_hash.keys.each do |ps| %>
           <li><a href='#<%= "#{ps}"%>'><%= "#{ps}" %></a></li>
         <% end %>
       </ul>
     </div>
-    <ul id='film' />
+    <div class='container'>
+      <ul class='container' />
+    </div>
   </body>
 </html>
