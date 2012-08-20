@@ -1,8 +1,8 @@
 /**
 * @source: http://scroll.hmplus.net/ndxz-studio/site/scroller_theme/style.css
-* 
+*
 * @version 1.0
-* @author Vaska 
+* @author Vaska
 * @author Gregory Cadar
 * @author Scroller Theme by Mathieu Hardiviller (www.hmplus.net)
 * using brain-time from Vaska and Nicolas Robert
@@ -26,6 +26,9 @@ body.section-1 { }
 body.section-2 { }
 body.section-3 { }
 
+h1 {
+  z-index: 2;
+}
 /* LINKS */
 /* colors for all links */
 a:link {
@@ -45,8 +48,8 @@ a:visited {
   background-color: #31B8DA;
   color: black;
 }
-	
-a:hover { 
+
+a:hover {
   text-decoration: none;
   background-color: #31B8DA;
   color: #DDDDDD;
@@ -85,13 +88,13 @@ a img { border: none; }
 #sidebar {
   z-index:80;
   height:100%;
-  width:220px;
+  width:420px;
   overflow:hidden;
   position:fixed;
   top:0;
   left:0;
   bottom:0;
-}	
+}
 
 #menu {
   height:100%;
@@ -111,29 +114,30 @@ a img { border: none; }
   display:block;
   cursor:hand;
   cursor:pointer;
+  margin:18px 18px 16px 18px;
 }
 
 #menu li a {
   background:url() repeat #1f1f1f;
   font-family:helvetica, arial, verdana;
   text-transform:uppercase;
-  font-size:9px;
+  font-size:16px;
   font-weight:900;
-  color:#DDDDDD; 
+  color:#DDDDDD;
   padding:8px 8px 6px 8px;
-} 
+}
 
 #menu li a:active {
   background:url() repeat #31b8da;
-} 
-   
+}
+
 #menu li span {
-  font-family:helvetica, arial, verdana;  
-  font-size:9px;  
+  font-family:helvetica, arial, verdana;
+  font-size:16px;
   text-style:italic;
-  color:#1f1f1f; 
-  padding:8px 0px 6px 2px; 
-}  
+  color:#1f1f1f;
+  padding:8px 0px 6px 2px;
+}
 
 #menu ul li.section-title { }
 
@@ -154,7 +158,7 @@ p {
   margin: 0px 0px 10px 12px;
 }
 
-h1 { 
+h1 {
   letter-spacing: -20px;
   line-height: 100%;
   font-size:1500%;
@@ -190,3 +194,15 @@ h4 {
 /* End Fonts / Typefaces */
 
 #once { clear: left; }
+
+.container, .content {
+  display: inline;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  float: left;
+  z-index: 0;
+}
+.content li {
+  padding: 0px 0px 25px 10px;
+  margin: 0px 0px 0px 0px 0px;
+}
