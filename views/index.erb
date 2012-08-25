@@ -18,31 +18,42 @@
     </style>
     -->
     <script>
+      var timer;
       var flickr = {
         sets: JSON.parse(<%= "'#{$sets_json}'" %>),
         load: function(name) {
-          var filmWidth = 300;
-          count = this.sets[name].photos.length
+          var totalWidth = 300;
+          clearInterval(timer);
+          var elements = [];
+          var count = this.sets[name].photos.length;
           console.log('Loading %d photos from set "%s" ...', count, name);
           new_photos = this.sets[name].photos;
           $('.container').fadeOut('slow', function() {
             $('.container').empty();
             $('.container').fadeIn();
             $.each(new_photos, function(k, v) {
-              $('<li />').addClass('content').append(
-                $('<img />')//.addClass('film')
-                  .attr('src', v.url)
-                  .load(function() {
+              elements.push(
+                $('<li class="content" />').append(
+                  $('<img src="'+v.url+'" />').load(function() {
                     if (!this.complete
                         || typeof this.naturalWidth == undefined
                         || this.naturalWidth == 0) {
                       console.log('Skipping broken image %d (%s)', k, v.url);
                     } else {
-                      filmWidth += this.naturalWidth;
-                      $('.container').css({width: filmWidth+'px'});
+                      totalWidth += this.naturalWidth;
+                      $('.container').css({width: totalWidth+'px'});
                     }
                   })
-              ).appendTo('.container');
+                ).hide().fadeIn(9000)
+              );
+              if (count === elements.length) {
+                timer = setInterval(function() {
+                  $('.container').append(elements.splice(0, 3));
+                  if (0 === elements.length) {
+                    clearInterval(timer);
+                  }
+                }, 1000);
+              }
             });
           });
         }
