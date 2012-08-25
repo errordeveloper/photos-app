@@ -1,5 +1,7 @@
 bin/rackup
-bin/thin
+bin/trinidad
 bin/tilt
 .bundle/
 *.sw[po]
+tmp/
+log/
