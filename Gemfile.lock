@@ -1,9 +1,8 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    daemons (1.1.9)
-    eventmachine (0.12.10-java)
     flickraw (0.9.6)
+    jruby-rack (1.1.9)
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
@@ -11,11 +10,11 @@ GEM
       rack (~> 1.3, >= 1.3.6)
       rack-protection (~> 1.2)
       tilt (~> 1.3, >= 1.3.3)
-    thin (1.4.1)
-      daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
-      rack (>= 1.0.0)
     tilt (1.3.3)
+    trinidad (1.4.1)
+      jruby-rack (>= 1.1.7)
+      trinidad_jars (>= 1.0.5)
+    trinidad_jars (1.0.6)
 
 PLATFORMS
   java
@@ -23,4 +22,4 @@ PLATFORMS
 DEPENDENCIES
   flickraw
   sinatra
-  thin
+  trinidad
