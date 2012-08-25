@@ -1,18 +1,9 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    childprocess (0.3.5)
-      ffi (~> 1.0, >= 1.0.6)
-    choice (0.1.6)
     daemons (1.1.9)
     eventmachine (0.12.10-java)
-    ffi (1.1.5-java)
     flickraw (0.9.6)
-    mizuno (0.6.4)
-      childprocess (>= 0.2.6)
-      choice (>= 0.1.0)
-      ffi (>= 1.0.0)
-      rack (>= 1.0.0)
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
@@ -31,6 +22,5 @@ PLATFORMS
 
 DEPENDENCIES
   flickraw
-  mizuno
   sinatra
   thin
