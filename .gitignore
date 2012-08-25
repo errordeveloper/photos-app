@@ -1,0 +1,5 @@
+bin/rackup
+bin/thin
+bin/tilt
+.bundle/
+*.sw[po]
