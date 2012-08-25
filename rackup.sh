@@ -5,4 +5,4 @@ export FLICKR_USER_ID='31943107@N08'
 
 export JRUBY_OPTS='-Xcext.enabled=true --server --1.9'
 
-./bin/rackup -s trinidad -p 3000
+./bin/rackup -s trinidad -p $PORT
