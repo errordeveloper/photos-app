@@ -1,6 +1,5 @@
 require 'flickraw'
 require 'sinatra'
-require 'eventmachine'
 
 CDN_PREFIX = 'http://cdnjs.cloudflare.com/ajax/libs/'
 CDN = {
