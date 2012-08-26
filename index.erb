@@ -4,14 +4,15 @@
     <title>
       <%= $user_name %>
     </title>
-    <% CDN[:scripts].each do |cdn| %>
+    <% FlickView::CDN[:scripts].each do |cdn| %>
       <script src='<%= cdn %>'></script>
     <% end %>
     <link rel='stylesheet' href='style.css'>
+    <!--<%= Time.now.to_s %>-->
     <script>
       var timer;
       var flickr = {
-        sets: JSON.parse(<%= "'#{$sets_json}'" %>),
+        sets: JSON.parse(<%= "'#{$sets_hash.to_json}'" %>),
         load: function(name) {
           var totalWidth = 300;
           clearInterval(timer);
