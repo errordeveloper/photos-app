@@ -26,6 +26,10 @@ body.section-1 { }
 body.section-2 { }
 body.section-3 { }
 
+ul {
+  list-style:none;
+}
+
 h1 {
   z-index: 2;
 }
@@ -99,7 +103,6 @@ a img { border: none; }
 #menu {
   height:100%;
   width:100%;
-  list-style:none;
   padding-top:75px;
   margin:0;
   top:0;
