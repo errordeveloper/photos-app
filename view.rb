@@ -16,11 +16,13 @@ module FlickView
   FlickRaw.api_key = ENV['FLICKR_API_KEY']
   FlickRaw.shared_secret = ENV['FLICKR_SHARED_SECRET']
 
-  def self.cache_index
-    user_id = ENV['FLICKR_USER_ID']
-    $user_name = flickr.people.getInfo(:user_id => user_id).username
+  USER_ID = ENV['FLICKR_USER_ID']
+  COLLECTION_ID = ENV['FLICKR_COLLECTION_ID']
+
+  def cache_index
+    $user_name = flickr.people.getInfo(:user_id => USER_ID).username
     $sets_hash = {}
-    flickr.photosets.getList(:user_id => user_id).each do |ps|
+    flickr.collections.getTree(:user_id => user_id, :collection_id => COLLECTION_ID).first.set.each do |ps|
       this = $sets_hash[ps.title] = { :id => ps.id, :description => ps.description, :photos => [] }
       flickr.photosets.getPhotos(:photoset_id => ps.id)["photo"].each do |p|
         this[:photos] << { :id => p.id, :url => FlickRaw.url_z(p) }
