@@ -1,7 +1,7 @@
 require 'erb'
 require 'flickraw'
 
-module FlickView
+class FlickView
 
   CDN_PREFIX = 'http://cdnjs.cloudflare.com/ajax/libs/'
   CDN = {
@@ -19,16 +19,21 @@ module FlickView
   USER_ID = ENV['FLICKR_USER_ID']
   COLLECTION_ID = ENV['FLICKR_COLLECTION_ID']
 
-  def cache_index
-    $user_name = flickr.people.getInfo(:user_id => USER_ID).username
-    $sets_hash = {}
-    flickr.collections.getTree(:user_id => user_id, :collection_id => COLLECTION_ID).first.set.each do |ps|
-      this = $sets_hash[ps.title] = { :id => ps.id, :description => ps.description, :photos => [] }
+  def initialize
+    index!
+  end
+  def index
+    return @index
+  end
+  def index!
+    @user_name = flickr.people.getInfo(:user_id => USER_ID).username
+    @sets_hash = {}
+    flickr.collections.getTree(:user_id => USER_ID, :collection_id => COLLECTION_ID).first.set.each do |ps|
+      this = @sets_hash[ps.title] = { :id => ps.id, :description => ps.description, :photos => [] }
       flickr.photosets.getPhotos(:photoset_id => ps.id)["photo"].each do |p|
         this[:photos] << { :id => p.id, :url => FlickRaw.url_z(p) }
       end
     end
-    $index = ERB.new(File.read('./index.erb')).result
-    return nil
+    @index = ERB.new(File.read('./index.erb')).result(binding())
   end
 end

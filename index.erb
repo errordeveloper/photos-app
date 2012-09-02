@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>
-      <%= $user_name %>
+      <%= @user_name %>
     </title>
     <% FlickView::CDN[:scripts].each do |cdn| %>
       <script src='<%= cdn %>'></script>
@@ -12,7 +12,7 @@
     <script>
       var timer;
       var flickr = {
-        sets: JSON.parse(<%= "'#{$sets_hash.to_json}'" %>),
+        sets: JSON.parse(<%= "'#{@sets_hash.to_json}'" %>),
         load: function(name) {
           var totalWidth = 300;
           clearInterval(timer);
@@ -40,6 +40,7 @@
               );
               if (count === elements.length) {
                 timer = setInterval(function() {
+                  console.log(elements);
                   $('.container').append(elements.splice(0, 3));
                   if (0 === elements.length) {
                     clearInterval(timer);
@@ -61,10 +62,10 @@
     </script>
   </head>
   <body>
-    <h1><%= $user_name %>'s Photography</h1>
+    <h1><%= @user_name %></h1><h1>Photography</h1>
     <div id='sidebar'>
       <ul id='menu'>
-        <% $sets_hash.keys.each do |ps| %>
+        <% @sets_hash.keys.each do |ps| %>
           <li><a href='#<%= "#{ps}"%>'><%= "#{ps}" %></a></li>
         <% end %>
       </ul>
