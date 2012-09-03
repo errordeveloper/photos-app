@@ -19,7 +19,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   text-align: left;
   background-color: white;
-  line-height : 120%;
+  line-height : 50%;
 }
 
 body.section-1 { }
@@ -37,26 +37,22 @@ h1 {
 /* colors for all links */
 a:link {
   text-decoration: none;
-  background-color: #31B8DA;
-  color: black;
+  color: #31B8DA;
 }
 
 a:active {
   text-decoration: none;
-  background-color: #31B8DA;
-  color: black;
+  color: #31B8DA;
 }
 
 a:visited {
   text-decoration: none;
-  background-color: #31B8DA;
-  color: black;
+  color: #31B8DA;
 }
 
 a:hover {
   text-decoration: none;
-  background-color: #31B8DA;
-  color: #DDDDDD;
+  color: #31B8DA;
 }
 
 a img { border: none; }
@@ -121,25 +117,17 @@ a img { border: none; }
 }
 
 #menu li a {
-  background:url() repeat #1f1f1f;
+  background:url() repeat #FFFFFF;
   font-family:helvetica, arial, verdana;
-  text-transform:uppercase;
-  font-size:16px;
+  /* text-transform:uppercase; */
+  font-size:14px;
   font-weight:900;
-  color:#DDDDDD;
-  padding:8px 8px 6px 8px;
+  color:#000000;
+  padding:4px 4px 3px 4px;
 }
 
 #menu li a:active {
   background:url() repeat #31b8da;
-}
-
-#menu li span {
-  font-family:helvetica, arial, verdana;
-  font-size:16px;
-  text-style:italic;
-  color:#1f1f1f;
-  padding:8px 0px 6px 2px;
 }
 
 #menu ul li.section-title { }
@@ -162,9 +150,9 @@ p {
 }
 
 h1 {
-  letter-spacing: -20px;
+  letter-spacing: -2px;
   line-height: 100%;
-  font-size:1500%;
+  font-size: 300%;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   text-align: left;
