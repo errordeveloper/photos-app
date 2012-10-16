@@ -156,6 +156,7 @@ h1 {
   font-weight: bold;
   font-family: ropa-sans, serif;
   text-align: left;
+  text-transform:uppercase;
   padding: 20px 0px 50px -20px;
 }
 
