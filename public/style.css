@@ -150,11 +150,12 @@ p {
 }
 
 h1 {
-  letter-spacing: -2px;
+  letter-spacing: 2px;
   line-height: 100%;
   font-size: 300%;
   font-weight: bold;
   font-family: ropa-sans, serif;
+  font-weight: 300;
   text-align: left;
   text-transform:uppercase;
   padding: 20px 0px 50px -20px;
