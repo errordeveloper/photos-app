@@ -16,7 +16,7 @@
 
 body {
   font-size: 5pt;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: ropa-sans, serif;
   text-align: left;
   background-color: white;
   line-height : 50%;
@@ -69,7 +69,7 @@ a img { border: none; }
   font-weight: bold;
   line-height : 170%;
   color: #1a1a1a;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: ropa-sans, serif;
 }
 #top-section a { /* this is the link property inside the Top-Section */
   text-decoration: none;
@@ -118,7 +118,7 @@ a img { border: none; }
 
 #menu li a {
   background:url() repeat #FFFFFF;
-  font-family:helvetica, arial, verdana;
+  font-family: istok-web, serif;
   /* text-transform:uppercase; */
   font-size:14px;
   font-weight:900;
@@ -143,7 +143,7 @@ a img { border: none; }
 p {
   font-size: 8pt;
   line-height: 150%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: ropa-sans, serif;
   text-align: left;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 10px 12px;
@@ -154,7 +154,7 @@ h1 {
   line-height: 100%;
   font-size: 300%;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: ropa-sans, serif;
   text-align: left;
   padding: 20px 0px 50px -20px;
 }
@@ -163,7 +163,7 @@ h2 {
   font-size:500%;
   line-height: 120%;
   font-weight: normal;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: ropa-sans, serif;
   text-align: left;
   padding: 0px 0px 10px 0px;
 }
@@ -173,7 +173,7 @@ h3 {
   line-height: 100%;
   letter-spacing: -5px;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: ropa-sans, serif;
   text-align: left;
   padding: 0px 0px 10px 0px;
 }

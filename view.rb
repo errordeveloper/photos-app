@@ -19,6 +19,12 @@ class FlickView
   USER_ID = ENV['FLICKR_USER_ID']
   COLLECTION_ID = ENV['FLICKR_COLLECTION_ID']
 
+  if ENV['EDGEFONTS'].nil?
+    EDGEFONTS = [ 'ropa-sans', 'istok-web' ]
+  else
+    EDGEFONTS = ENV['EDGEFONTS'].split
+  end
+
   def initialize
     index!
   end

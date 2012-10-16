@@ -7,6 +7,9 @@
     <% FlickView::CDN[:scripts].each do |cdn| %>
       <script src='<%= cdn %>'></script>
     <% end %>
+    <% FlickView::EDGEFONTS.each do |f| %>
+      <script src='http://use.edgefonts.net/<%= f %>.js'></script>
+    <% end %>
     <link rel='stylesheet' href='style.css'>
     <!--<%= Time.now.to_s %>-->
     <script>
