@@ -96,6 +96,7 @@ a img { border: none; }
 #menu {
   height:100%;
   width:100%;
+  padding-left:32px;
   padding-top:175px;
   margin:0;
   top:0;
