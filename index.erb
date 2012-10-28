@@ -54,19 +54,24 @@
         }
       };
       $(window).hashchange(function() {
-        flickr.load(location.hash.slice(1));
+        try {
+          flickr.load(location.hash.slice(1));
+        } catch (e) {
+          console.log('Nothing to load!');
+        }
       });
 
       $(document).ready(function() {
         // Tirger `hashchange` enent on load, in case it was provided
         $(window).hashchange();
+        $('svg.site_header').fadeIn('slow');
       });
     </script>
   </head>
   <body>
     <header class='site_header'>
       <h1 style='display:none;'><%= @user_name %><br>Photography</h1>
-      <svg class='site_header' >
+      <svg class='site_header' style='display:none;'>
         <g class='site_header' style='position:fixed;left:0px;top:0px;' transform='translate(-123, -100)'>
           <g id="header_line1" transform="scale(0.9835121,1.0167643)" >
             <path transform="scale(1.0167643,0.98351211)" d="m 123.53125,109 0,23.96875 2.3125,0 0,-21.84375 7.3125,0 c 2.43146,0 4.78231,0.58532 6.53125,2.4375 2.43146,2.55776 2.28125,7.20365 2.28125,10.6875 0,2.46565 0.0308,5.97455 -0.78125,8.71875 l 2.4375,0 c 0.68804,-2.84306 0.625,-6.10188 0.625,-8.71875 0,-4.23354 0.13381,-9.19985 -2.9375,-12.375 -1.7916,-1.85217 -4.43712,-2.875 -7.59375,-2.875 l -10.1875,0 z" />
