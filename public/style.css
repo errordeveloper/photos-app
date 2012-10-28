@@ -30,9 +30,6 @@ ul {
   list-style:none;
 }
 
-h1 {
-  z-index: 2;
-}
 /* LINKS */
 /* colors for all links */
 a:link {
@@ -99,7 +96,7 @@ a img { border: none; }
 #menu {
   height:100%;
   width:100%;
-  padding-top:75px;
+  padding-top:175px;
   margin:0;
   top:0;
   bottom:0;
@@ -147,6 +144,26 @@ p {
   text-align: left;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 10px 12px;
+}
+
+.site_header {
+  position:fixed;
+  left:52px;
+  top:51px;
+  width:346px;
+  height:83px;
+  z-index:1
+}
+
+#header_line1 {
+  fill:#000000;
+  fill-opacity:1;
+  stroke:none;
+}
+#header_line2 {
+  fill:#a7a7a7;
+  fill-opacity:1;
+  stroke:none;
 }
 
 h1 {
